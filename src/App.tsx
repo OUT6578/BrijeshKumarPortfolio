@@ -1256,16 +1256,52 @@ const GlobalStyles = () => (
       animation: particleDrift 8s linear infinite;
     }
 
+    /* Flower Decoration Styles */
+    .flower-item {
+      position: relative;
+      animation: pulse 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(244, 114, 182, 0.6));
+    }
+    
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr !important; text-align: center; gap: 1.5rem !important; }
-      .hero-image-container { margin: 0 auto; }
-      .x-lines-wrapper { margin: -30px auto 0 auto; }
+      .hero-grid { grid-template-columns: 1fr !important; text-align: center; gap: 2rem !important; }
+      .hero-image-container { margin: 0 auto; order: -1; }
+      .flower-decoration-container { margin-top: 15px !important; }
     }
     @media (max-width: 768px) {
-      .photo-frame { width: 160px; height: 160px; }
-      .x-lines-wrapper { width: 220px; height: 220px; margin: -25px auto 0 auto; }
-      .center-element { width: 40px; height: 40px; }
-      .flower-svg-icon { width: 24px; height: 24px; }
+      .photo-frame { width: 160px !important; height: 160px !important; }
+      .hero-grid { gap: 1.5rem !important; padding: 2rem 1rem !important; grid-template-columns: 1fr !important; }
+      .nav-links-desktop { display: none !important; }
+      section { padding: 3rem 1rem !important; }
+      h1 { font-size: clamp(1.8rem, 7vw, 5rem) !important; }
+      h2 { font-size: clamp(1.2rem, 5vw, 2rem) !important; }
+      h3 { font-size: clamp(1rem, 4vw, 1.5rem) !important; }
+      .mono { font-size: 0.6rem !important; }
+    }
+    @media (max-width: 640px) {
+      .photo-frame { width: 140px !important; height: 140px !important; }
+      .hero-grid { padding: 1.5rem 0.75rem !important; gap: 1.2rem !important; }
+      section { padding: 2.5rem 0.75rem !important; }
+      h1 { font-size: clamp(1.5rem, 6vw, 4rem) !important; word-break: break-word; }
+      h2 { font-size: clamp(1rem, 4vw, 1.5rem) !important; }
+      .syne { font-size: clamp(1rem, 3vw, 1.5rem) !important; }
+      .mono { font-size: 0.55rem !important; }
+      .text-shimmer { font-size: 0.9rem !important; }
+      [style*="display: grid"] { gap: 0.75rem !important; }
+      [style*="display: flex"] { gap: 0.5rem !important; }
+      .reveal, .reveal-l, .reveal-r { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
+    @media (max-width: 480px) {
+      .photo-frame { width: 120px !important; height: 120px !important; }
+      .hero-grid { padding: 1rem 0.5rem !important; }
+      section { padding: 2rem 0.5rem !important; }
+      h1 { font-size: clamp(1.3rem, 5vw, 3rem) !important; }
+      h2 { font-size: clamp(0.9rem, 3vw, 1.2rem) !important; }
+      h3 { font-size: clamp(0.85rem, 3vw, 1rem) !important; }
+      .mono { font-size: 0.5rem !important; }
+      a, button { font-size: 0.7rem !important; padding: 0.5rem 0.75rem !important; }
+      [style*="maxWidth"] { max-width: 100% !important; }
+      p { font-size: 0.8rem !important; }
     }
   `}</style>
 );
@@ -1601,16 +1637,34 @@ const ImageFrame = () => (
         }}
       />
     </div>
-    <div className="deco-flower" style={{ top: -12, right: -12, position: "absolute" }}>
-      <svg viewBox="0 0 100 100" width="32" height="32">
-        <path d="M50 0 C 50 25 75 50 100 50 C 75 50 50 75 50 100 C 50 75 25 50 0 50 C 25 50 50 25 50 0" fill="#f472b6" />
-      </svg>
-    </div>
-    <div className="deco-flower" style={{ bottom: -12, left: -12, position: "absolute", animationDelay: "1.5s", opacity: 0.4 }}>
-      <svg viewBox="0 0 100 100" width="32" height="32">
-        <path d="M50 0 C 50 25 75 50 100 50 C 75 50 50 75 50 100 C 50 75 25 50 0 50 C 25 50 50 25 50 0" fill="#f472b6" />
-      </svg>
-    </div>
+    {/* Flower Border Design */}
+    {[
+      { top: -12, right: -12, size: 38, delay: "0s", op: 0.8 },
+      { bottom: -10, left: -10, size: 30, delay: "1.5s", op: 0.6 },
+      { top: "50%", left: -18, size: 22, delay: "0.8s", op: 0.5 },
+      { top: "20%", right: -15, size: 18, delay: "2.1s", op: 0.4 },
+    ].map((f, i) => (
+      <div 
+        key={i} 
+        className="deco-flower" 
+        style={{ 
+          position: "absolute", 
+          top: f.top, 
+          right: f.right, 
+          bottom: f.bottom, 
+          left: f.left, 
+          width: f.size, 
+          height: f.size, 
+          opacity: f.op, 
+          animationDelay: f.delay,
+          transform: f.top === "50%" ? "translateY(-50%)" : "none"
+        }}
+      >
+        <svg viewBox="0 0 100 100" width={f.size} height={f.size}>
+          <path d="M50 0 C 50 25 75 50 100 50 C 75 50 50 75 50 100 C 50 75 25 50 0 50 C 25 50 50 25 50 0" fill="#f472b6" />
+        </svg>
+      </div>
+    ))}
     {PARTICLE_POSITIONS.map((p, i) => (
       <div
         key={i}
@@ -1628,16 +1682,15 @@ const ImageFrame = () => (
   </div>
 );
 
-const DecorativeXLines = () => (
-  <div className="x-lines-wrapper">
-    <div className="x-line x-line-right" />
-    <div className="x-line x-line-left" />
-    <div className="center-element">
-      <svg className="flower-svg-icon" viewBox="0 0 100 100" fill="white">
-        <path d="M50 15 L58 35 L80 38 L64 52 L70 75 L50 63 L30 75 L36 52 L20 38 L42 35 L50 15Z" />
-        <circle cx="50" cy="50" r="12" fill="#ffd966" />
-      </svg>
-    </div>
+const FlowerDecoration = () => (
+  <div className="flower-decoration-container" style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center", marginTop: "25px", zIndex: 10, position: "relative" }}>
+    {[42, 34, 28, 22, 16].map((size, i) => (
+      <div key={i} className="flower-item" style={{ width: size, height: size, animationDelay: `${i * 0.2}s` }}>
+        <svg viewBox="0 0 100 100" width={size} height={size}>
+          <path d="M50 0 C 50 25 75 50 100 50 C 75 50 50 75 50 100 C 50 75 25 50 0 50 C 25 50 50 25 50 0" fill="#f472b6" />
+        </svg>
+      </div>
+    ))}
   </div>
 );
 
@@ -1663,8 +1716,8 @@ function Hero() {
       <div style={{ position: "absolute", inset: 0, opacity: .03, backgroundImage: "linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px)", backgroundSize: "50px 50px" }} />
 
       <div style={{
-        position: "relative", zIndex: 5, maxWidth: "70rem", margin: "0 auto", padding: "2rem 1.5rem", width: "100%",
-        display: "grid", gridTemplateColumns: "1fr auto", gap: "2.5rem", alignItems: "center"
+        position: "relative", zIndex: 5, maxWidth: "70rem", margin: "0 auto", padding: "2rem 1rem", width: "100%",
+        display: "grid", gridTemplateColumns: "1fr auto", gap: "clamp(1rem, 3vw, 2.5rem)", alignItems: "center"
       }} className="hero-grid">
         <div style={{ animation: "fadeUp .7s .3s cubic-bezier(.16,1,.3,1) both" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", padding: ".3rem 0.8rem", borderRadius: 99, background: "rgba(167,139,250,.08)", border: "1px solid rgba(167,139,250,.25)", marginBottom: "1.5rem", animation: "fadeUp .6s .2s cubic-bezier(.16,1,.3,1) both" }}>
@@ -1676,8 +1729,8 @@ function Hero() {
             {DATA.name.map((word, wi) => (
               <div key={wi} style={{ overflow: "visible", paddingBottom: "0.25rem" }}>
                 <h1 className="syne" style={{
-                  fontSize: "clamp(2.5rem,8vw,6rem)", fontWeight: 800, lineHeight: .95,
-                  letterSpacing: "-0.02em",
+                  fontSize: "clamp(1.8rem,8vw,6rem)", fontWeight: 800, lineHeight: .95,
+                  letterSpacing: "-0.02em", wordBreak: "break-word",
                   background: wi === 0
                     ? "linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%)"
                     : "linear-gradient(135deg,#a78bfa,#f472b6,#38bdf8)",
@@ -1701,7 +1754,7 @@ function Hero() {
             {DATA.about}
           </p>
 
-          <div style={{ display: "flex", gap: ".6rem", flexWrap: "wrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both" }}>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both" }}>
             <a href={`mailto:${DATA.email}`} className="btn-ripple" style={{
               display: "inline-block", padding: ".7rem 1.6rem", borderRadius: 10,
               background: "linear-gradient(135deg,#7c3aed,#ec4899)",
@@ -1737,7 +1790,7 @@ function Hero() {
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))", gap: "0.8rem", maxWidth: 500, animation: "fadeUp .7s 1.6s cubic-bezier(.16,1,.3,1) both" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(80px,1fr))", gap: "0.6rem", maxWidth: "100%", animation: "fadeUp .7s 1.6s cubic-bezier(.16,1,.3,1) both" }}>
             {DATA.stats.map((s, i) => {
               const [val, ref] = useCounter(s.value, s.value % 1 !== 0 ? 2 : 0);
               return (
@@ -1759,7 +1812,7 @@ function Hero() {
 
         <div style={{ animation: "scaleIn .8s .6s cubic-bezier(.16,1,.3,1) both", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <ImageFrame />
-          <DecorativeXLines />
+          <FlowerDecoration />
         </div>
       </div>
     </section>
@@ -1769,11 +1822,11 @@ function Hero() {
 /* ── ABOUT ── */
 function About() {
   return (
-    <section id="about" style={{ padding: "3rem 1.5rem", background: "#030712", position: "relative" }}>
+    <section id="about" style={{ padding: "3rem 1rem", background: "#030712", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,.05), transparent)", pointerEvents: "none" }} />
       <div style={{ maxWidth: "70rem", margin: "0 auto", position: "relative", zIndex: 2 }}>
         <SH num="01 /" title="About Me" color="#a78bfa" />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "2rem", alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: "2rem", alignItems: "start" }}>
           <div>
             <h3 className="reveal syne" style={{ fontSize: "clamp(1rem,3vw,1.5rem)", fontWeight: 700, lineHeight: 1.3, marginBottom: "1rem" }}>
               Turning complex domains into{" "}
@@ -1835,7 +1888,7 @@ function About() {
 function Experience() {
   const [open, setOpen] = useState(0);
   return (
-    <section id="experience" style={{ padding: "3rem 1.5rem", background: "#030712", position: "relative" }}>
+    <section id="experience" style={{ padding: "3rem 1rem", background: "#030712", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(56,189,248,.04), transparent)", pointerEvents: "none" }} />
       <div style={{ maxWidth: "70rem", margin: "0 auto", position: "relative", zIndex: 2 }}>
         <SH num="02 /" title="Experience" color="#38bdf8" />
@@ -1906,7 +1959,7 @@ function Experience() {
 /* ── PROJECTS ── */
 function Projects() {
   return (
-    <section id="projects" style={{ padding: "3rem 1.5rem", background: "#030712", position: "relative" }}>
+    <section id="projects" style={{ padding: "3rem 1rem", background: "#030712", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(52,211,153,.04), transparent)", pointerEvents: "none" }} />
       <div style={{ maxWidth: "70rem", margin: "0 auto", position: "relative", zIndex: 2 }}>
         <SH num="03 /" title="Selected Work" color="#34d399" />
@@ -1956,7 +2009,7 @@ function Skills() {
   const categories = Object.keys(DATA.skills);
 
   return (
-    <section id="skills" style={{ padding: "3rem 1.5rem", background: "#030712", position: "relative" }}>
+    <section id="skills" style={{ padding: "3rem 1rem", background: "#030712", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(251,146,60,.04), transparent)", pointerEvents: "none" }} />
       <div style={{ maxWidth: "70rem", margin: "0 auto", position: "relative", zIndex: 2 }}>
         <SH num="04 /" title="Technical Skills" color="#fb923c" />
@@ -2042,11 +2095,11 @@ function Contact() {
   const [copied, setCopied] = useState(false);
   const copy = () => { navigator.clipboard.writeText(DATA.email); setCopied(true); setTimeout(() => setCopied(false), 2000); };
   return (
-    <section id="contact" style={{ padding: "3rem 1.5rem 2.5rem", background: "#030712", position: "relative" }}>
+    <section id="contact" style={{ padding: "3rem 1rem 2.5rem", background: "#030712", position: "relative" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(244,114,182,.05), transparent)", pointerEvents: "none" }} />
       <div style={{ maxWidth: "70rem", margin: "0 auto", position: "relative", zIndex: 2 }}>
         <SH num="05 /" title="Let's Talk" color="#f472b6" />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "2.5rem", alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "clamp(1.5rem, 4vw, 2.5rem)", alignItems: "center" }}>
           <div>
             <h2 className="reveal syne" style={{ fontSize: "clamp(2rem,6vw,4rem)", fontWeight: 900, lineHeight: .95, letterSpacing: "-0.02em", marginBottom: "1rem" }}>
               Let's build<br />
