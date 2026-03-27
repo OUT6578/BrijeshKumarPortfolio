@@ -1754,34 +1754,34 @@ function Hero() {
             {DATA.about}
           </p>
 
-          <div style={{ display: "flex", gap: "0.4rem", flexWrap: "nowrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both", justifyContent: "flex-start", overflowX: "auto", paddingBottom: "0.5rem", scrollBehavior: "smooth" }}>
+          <div style={{ display: "flex", gap: "0.3rem", flexWrap: "nowrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both", width: "fit-content", overflowX: "auto", paddingBottom: "0.5rem", scrollBehavior: "smooth" }}>
             <a href={`mailto:${DATA.email}`} className="btn-ripple" style={{
-              display: "inline-block", padding: ".5rem 0.8rem", borderRadius: 8,
+              display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
               background: "linear-gradient(135deg,#7c3aed,#ec4899)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
-              color: "#fff", fontWeight: 600, fontSize: "clamp(.65rem, 2vw, .85rem)", textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(139,92,246,.4)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap", flex: "0 0 auto",
+              color: "#fff", fontWeight: 600, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none",
+              boxShadow: "0 4px 16px rgba(139,92,246,.3)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap", flex: "0 0 auto",
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(139,92,246,.5)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(139,92,246,.4)"; }}>
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(139,92,246,.4)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(139,92,246,.3)"; }}>
               Touch
             </a>
             <a href="/DotNet__FullStackDeveloper.pdf" download="Brajesh_Kumar_Resume.pdf" style={{
-              display: "inline-block", padding: ".5rem 0.8rem", borderRadius: 8,
+              display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
               background: "linear-gradient(135deg,#059669,#0d9488)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
-              color: "#fff", fontWeight: 600, fontSize: "clamp(.65rem, 2vw, .85rem)", textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(5,150,105,.4)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap", flex: "0 0 auto",
+              color: "#fff", fontWeight: 600, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none",
+              boxShadow: "0 4px 16px rgba(5,150,105,.3)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap", flex: "0 0 auto",
             }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(5,150,105,.5)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(5,150,105,.4)"; }}>
-              📄 Resume
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(5,150,105,.4)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(5,150,105,.3)"; }}>
+              Resume
             </a>
             {[["GitHub", DATA.links.github], ["LinkedIn", DATA.links.linkedin]].map(([label, href]) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" style={{
-                display: "inline-block", padding: ".5rem 0.8rem", borderRadius: 8,
+                display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
                 background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.15)",
-                color: "rgba(255,255,255,.8)", fontWeight: 500, fontSize: "clamp(.65rem, 2vw, .85rem)", textDecoration: "none", transition: "all .25s", whiteSpace: "nowrap", flex: "0 0 auto",
+                color: "rgba(255,255,255,.8)", fontWeight: 500, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none", transition: "all .25s", whiteSpace: "nowrap", flex: "0 0 auto",
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.1)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.3)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.05)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.15)"; }}>
