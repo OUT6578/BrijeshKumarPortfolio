@@ -729,7 +729,6 @@ function Hero() {
           <p style={{ maxWidth: 500, color: "rgba(255,255,255,.5)", lineHeight: 1.65, marginBottom: "1.8rem", fontSize: ".85rem", animation: "fadeUp .7s 1.2s cubic-bezier(.16,1,.3,1) both" }}>
             {DATA.about}
           </p>
-
           <div style={{ display: "flex", gap: "0.3rem", flexWrap: "nowrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both", width: "fit-content", overflowX: "auto", paddingBottom: "0.5rem", scrollBehavior: "smooth" }}>
             <a href={`mailto:${DATA.email}`} className="btn-ripple" style={{
               display: "inline-flex", alignItems: "center", gap: "0.3rem", padding: ".45rem 0.7rem", borderRadius: 6,
