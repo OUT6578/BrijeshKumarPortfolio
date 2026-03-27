@@ -1754,56 +1754,56 @@ function Hero() {
             {DATA.about}
           </p>
 
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both" }}>
+          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both", justifyContent: "flex-start" }}>
             <a href={`mailto:${DATA.email}`} className="btn-ripple" style={{
-              display: "inline-block", padding: ".7rem 1.6rem", borderRadius: 10,
+              display: "inline-block", padding: ".6rem 1rem", borderRadius: 10,
               background: "linear-gradient(135deg,#7c3aed,#ec4899)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
-              color: "#fff", fontWeight: 600, fontSize: ".85rem", textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(139,92,246,.4)", transition: "transform .25s, box-shadow .25s",
+              color: "#fff", fontWeight: 600, fontSize: "clamp(.7rem, 2vw, .85rem)", textDecoration: "none",
+              boxShadow: "0 6px 24px rgba(139,92,246,.4)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap",
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(139,92,246,.5)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(139,92,246,.4)"; }}>
-              Get In Touch →
+              Get In Touch
             </a>
             <a href="/DotNet__FullStackDeveloper.pdf" download="Brajesh_Kumar_Resume.pdf" style={{
-              display: "inline-block", padding: ".7rem 1.5rem", borderRadius: 10,
+              display: "inline-block", padding: ".6rem 1rem", borderRadius: 10,
               background: "linear-gradient(135deg,#059669,#0d9488)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
-              color: "#fff", fontWeight: 600, fontSize: ".85rem", textDecoration: "none",
-              boxShadow: "0 6px 24px rgba(5,150,105,.4)", transition: "transform .25s, box-shadow .25s",
+              color: "#fff", fontWeight: 600, fontSize: "clamp(.7rem, 2vw, .85rem)", textDecoration: "none",
+              boxShadow: "0 6px 24px rgba(5,150,105,.4)", transition: "transform .25s, box-shadow .25s", whiteSpace: "nowrap",
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(5,150,105,.5)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(5,150,105,.4)"; }}>
               📄 Resume
             </a>
-            {[["GitHub ↗", DATA.links.github], ["LinkedIn ↗", DATA.links.linkedin]].map(([label, href]) => (
+            {[["GitHub", DATA.links.github], ["LinkedIn", DATA.links.linkedin]].map(([label, href]) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" style={{
-                display: "inline-block", padding: ".7rem 1.5rem", borderRadius: 10,
+                display: "inline-block", padding: ".6rem 1rem", borderRadius: 10,
                 background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.15)",
-                color: "rgba(255,255,255,.8)", fontWeight: 500, fontSize: ".85rem", textDecoration: "none", transition: "all .25s",
+                color: "rgba(255,255,255,.8)", fontWeight: 500, fontSize: "clamp(.7rem, 2vw, .85rem)", textDecoration: "none", transition: "all .25s", whiteSpace: "nowrap",
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.1)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.3)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.05)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.15)"; }}>
-                {label}
+                {label} ↗
               </a>
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(80px,1fr))", gap: "0.6rem", maxWidth: "100%", animation: "fadeUp .7s 1.6s cubic-bezier(.16,1,.3,1) both" }}>
+          <div style={{ display: "flex", gap: "0.6rem", flexWrap: "nowrap", maxWidth: "100%", animation: "fadeUp .7s 1.6s cubic-bezier(.16,1,.3,1) both", overflowX: "auto", paddingBottom: "0.5rem", scrollBehavior: "smooth" }}>
             {DATA.stats.map((s, i) => {
               const [val, ref] = useCounter(s.value, s.value % 1 !== 0 ? 2 : 0);
               return (
                 <div key={i} ref={ref as any} className="card-lift" style={{
-                  padding: "0.9rem", borderRadius: 14,
+                  padding: "0.8rem 0.7rem", borderRadius: 12,
                   background: "rgba(255,255,255,.03)", border: `1px solid ${s.color}22`,
-                  position: "relative", overflow: "hidden",
+                  position: "relative", overflow: "hidden", minWidth: "70px", flex: "0 0 auto",
                 }}>
                   <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 0% 0%, ${s.color}15, transparent 70%)` }} />
-                  <div className="syne" style={{ fontSize: "1.6rem", fontWeight: 800, color: s.color, textShadow: `0 0 15px ${s.glow}`, lineHeight: 1 }}>
+                  <div className="syne" style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)", fontWeight: 800, color: s.color, textShadow: `0 0 15px ${s.glow}`, lineHeight: 1 }}>
                     {val}{s.suffix}
                   </div>
-                  <div className="mono" style={{ fontSize: ".5rem", letterSpacing: ".15em", color: "rgba(255,255,255,.4)", textTransform: "uppercase", marginTop: ".3rem" }}>{s.label}</div>
+                  <div className="mono" style={{ fontSize: "clamp(.45rem, 1.5vw, .5rem)", letterSpacing: ".12em", color: "rgba(255,255,255,.4)", textTransform: "uppercase", marginTop: ".2rem" }}>{s.label}</div>
                 </div>
               );
             })}
