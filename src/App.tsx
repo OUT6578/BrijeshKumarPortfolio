@@ -1315,7 +1315,7 @@ const DATA = {
   phone: "8200129130",
   location: "Noida, Sector-15, India",
   links: {
-    linkedin: "https://www.linkedin.com/in/braj%20eshkumar-9a1212212/",
+    linkedin: "https://www.linkedin.com/in/brajesh-kumar-9a1212212",
     github: "https://github.com/brajeshkumar60730",
     leetcode: "https://leetcode.com/u/BrajeshCodeTech/",
   },
