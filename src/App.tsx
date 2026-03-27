@@ -1756,7 +1756,7 @@ function Hero() {
 
           <div style={{ display: "flex", gap: "0.3rem", flexWrap: "nowrap", marginBottom: "2.5rem", animation: "fadeUp .7s 1.4s cubic-bezier(.16,1,.3,1) both", width: "fit-content", overflowX: "auto", paddingBottom: "0.5rem", scrollBehavior: "smooth" }}>
             <a href={`mailto:${DATA.email}`} className="btn-ripple" style={{
-              display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
+              display: "inline-flex", alignItems: "center", gap: "0.3rem", padding: ".45rem 0.7rem", borderRadius: 6,
               background: "linear-gradient(135deg,#7c3aed,#ec4899)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
               color: "#fff", fontWeight: 600, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none",
@@ -1764,10 +1764,11 @@ function Hero() {
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(139,92,246,.4)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(139,92,246,.3)"; }}>
-              Touch
+              <span>💬</span>
+              <span style={{ display: "none" }}>Touch</span>
             </a>
             <a href="/DotNet__FullStackDeveloper.pdf" download="Brajesh_Kumar_Resume.pdf" style={{
-              display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
+              display: "inline-flex", alignItems: "center", gap: "0.3rem", padding: ".45rem 0.7rem", borderRadius: 6,
               background: "linear-gradient(135deg,#059669,#0d9488)",
               backgroundSize: "200% 200%", animation: "gradShift 4s ease infinite",
               color: "#fff", fontWeight: 600, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none",
@@ -1775,17 +1776,19 @@ function Hero() {
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(5,150,105,.4)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(5,150,105,.3)"; }}>
-              Resume
+              <span>📄</span>
+              <span style={{ display: "none" }}>Resume</span>
             </a>
-            {[["GitHub", DATA.links.github], ["LinkedIn", DATA.links.linkedin]].map(([label, href]) => (
+            {[["GitHub", DATA.links.github, "🐙"], ["LinkedIn", DATA.links.linkedin, "💼"]].map(([label, href, icon]) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" style={{
-                display: "inline-block", padding: ".45rem 0.7rem", borderRadius: 6,
+                display: "inline-flex", alignItems: "center", gap: "0.3rem", padding: ".45rem 0.7rem", borderRadius: 6,
                 background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.15)",
                 color: "rgba(255,255,255,.8)", fontWeight: 500, fontSize: "clamp(.6rem, 1.8vw, .8rem)", textDecoration: "none", transition: "all .25s", whiteSpace: "nowrap", flex: "0 0 auto",
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.1)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.3)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.05)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.15)"; }}>
-                {label}
+                <span>{icon}</span>
+                <span style={{ display: "none" }}>{label}</span>
               </a>
             ))}
           </div>
